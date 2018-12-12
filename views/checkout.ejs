@@ -1,0 +1,75 @@
+<% include header %>
+
+<section id="bread">
+    <div class="bread flex">
+        <div>
+            <p><a href="/">Главная</a> / Оформление заказа</p>
+        </div>
+    </div>
+</section> 
+    
+<section id="checkout">
+    <div class="checkout row">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <form>
+                <div>
+                    <p>Ваше имя:</p>
+                    <input type="text" placeholder="Иван">
+                </div>
+                <div>
+                    <p>Ваше фамилия:</p>
+                    <input type="text" placeholder="Иванов">
+                </div>
+                <div>
+                    <p>Код партнера (необязательно):</p>
+                    <input type="number" placeholder="304500">
+                </div>
+                <div>
+                    <p>Город:</p>
+                    <input type="text" placeholder="Астана">
+                </div>
+                <div>
+                    <p>Область:</p>
+                    <input type="text" placeholder="Акмолинская">
+                </div>
+                <div>
+                    <p>Адрес:</p>
+                    <input type="text" placeholder="Ташенова 11">
+                </div>
+                <div>
+                    <p>Почтовый индекс:</p>
+                    <input type="number" placeholder="010000">
+                </div>
+                <div>
+                    <p>Телефон:</p>
+                    <input type="tel" placeholder="77001234567">
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="buyList">
+                <div>
+                    <div>
+                        <img src="img/item.jpg">
+                        <p><span>Гель серебрянный щит</span> - $30</p>
+                    </div>
+                    <button><img src="svg/cancel.svg"></button>
+                </div>
+                <div>
+                    <div>
+                        <img src="img/item.jpg">
+                        <p><span>Гель серебрянный щит</span> - $30</p>
+                    </div>
+                    <button><img src="svg/cancel.svg"></button>
+                </div>
+                <div></div>
+                <div>
+                    <p>Итого: $60</p>
+                    <a href="#" class="btn btn-green">Завершить заказ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<% include footer %>

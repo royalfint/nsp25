@@ -1,0 +1,129 @@
+<% include header %>
+    
+    <section id="hero">
+        <div class="hero flex">
+            <div>
+                <h3>Новый завоз</h3>
+                <h1>Здоровье</h1>
+                <h2>Хиты продаж</h2>
+
+                <a href="/products" class="btn big btn-green smooth">Купить сейчас</a>
+            </div>
+            <div>
+                <img src="img/girl.png" alt="">
+            </div>
+        </div>
+        <div class="control"><img src="svg/left-arrow.svg" alt=""></div>
+        <div class="control right"><img src="svg/right-arrow.svg" alt=""></div>
+    </section>
+
+    <section id="popular">
+        <div class="popular loop row">
+            <div class="col-xs-12">
+                <div>
+                    <h2>Наша Продукция</h2>
+                    <h1>Последний завоз</h1>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <img src="img/item.jpg" alt="" onclick="goto('/single-product');">
+                <h1>Серебрянный Щит</h1>
+                <h2>Добавки</h2>
+                <h3>$30.00 <span>$40.00</span></h3>
+                <div>
+                    <a href="" class="btn btn-green">В корзину</a>
+                    <a href="/checkout" class="btn btn-gray">Купить</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <img src="img/item.jpg" alt="" onclick="goto('/single-product');">
+                <h1>Серебрянный Щит</h1>
+                <h2>Добавки</h2>
+                <h3>$30.00 <span>$40.00</span></h3>
+                <div>
+                    <a href="" class="btn btn-green">В корзину</a>
+                    <a href="/checkout" class="btn btn-gray">Купить</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 third-item">
+                <img src="img/item.jpg" alt="" onclick="goto('/single-product');">
+                <h1>Серебрянный Щит</h1>
+                <h2>Добавки</h2>
+                <h3>$30.00 <span>$40.00</span></h3>
+                <div>
+                    <a href="" class="btn btn-green">В корзину</a>
+                    <a href="/checkout" class="btn btn-gray">Купить</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 fourth-item">
+                <img src="img/item.jpg" alt="" onclick="goto('/single-product');">
+                <h1>Серебрянный Щит</h1>
+                <h2>Добавки</h2>
+                <h3>$30.00 <span>$40.00</span></h3>
+                <div>
+                    <a href="" class="btn btn-green">В корзину</a>
+                    <a href="/checkout" class="btn btn-gray">Купить</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="discount">
+        <div class="discount flex">
+            <div>
+                <h1>Скидка 20% на все</h1>
+                <h2>Зарегистрируйтесь и следуйте дальнейшим инструкциям.</h2>
+                <a href="/discount" class="btn-green btn big">Получить скидку</a>
+            </div>
+            <div>
+                <img src="img/bottle.jpg" alt="">
+            </div>
+        </div>
+    </section>
+
+    <section id="posts" class="embed">
+        <div class="posts row">
+            <div class="col-xs-12">
+                <h2>Будь в курсе</h2>
+                <h1>Самые свежие статьи</h1>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="post flex">
+                    <img src="img/fat.jpg" alt="">
+                    <h1>Проблема ожирения и избыточный веса</h1>
+                    <p>Согласно последних данных Росздравнадора показатели заболеваемости ...</p>
+                    <a href="/single-post" class="btn btn-green">Подробнее</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="post flex">
+                    <img src="img/face.jpg" alt="">
+                    <h1>Проблема ожирения и избыточный веса</h1>
+                    <p>Согласно последних данных Росздравнадора показатели заболеваемости ...</p>
+                    <a href="/single-post" class="btn btn-green">Подробнее</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 third-item">
+                <div class="post flex">
+                    <img src="img/glass.jpg" alt="">
+                    <h1>Проблема ожирения и избыточный веса</h1>
+                    <p>Согласно последних данных Росздравнадора показатели заболеваемости ...</p>
+                    <a href="/single-post" class="btn btn-green">Подробнее</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 fourth-item">
+                <div class="post flex">
+                    <img src="img/sick.jpg" alt="">
+                    <h1>Проблема ожирения и избыточный веса</h1>
+                    <p>Согласно последних данных Росздравнадора показатели заболеваемости ...</p>
+                    <a href="/single-post" class="btn btn-green">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        function goto(url) { window.location.href = url; }
+    </script>
+    
+<% include footer %>

@@ -1,0 +1,90 @@
+<% include header %>
+
+    <section id="bread">
+        <div class="bread flex">
+            <div>
+                <p><a href="/">Главная</a> / Результаты поиска</p>
+            </div>
+        </div>
+    </section> 
+    
+    <section id="searchRes">
+        <div class="searchRes">
+            <h1>Результаты поиска:</h1>
+        </div>
+    </section>
+    
+    <section id="popular" style="padding-top: 1.5rem;">
+        <div class="popular loop row">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <img src="img/item.jpg" alt="" onclick="goto('/single-product');">
+                <h1>Серебрянный Щит</h1>
+                <h2>Добавки</h2>
+                <h3>$30.00 <span>$40.00</span></h3>
+                <div>
+                    <a href="" class="btn btn-green">В корзину</a>
+                    <a href="/checkout" class="btn btn-gray">Купить</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <img src="img/item.jpg" alt="" onclick="goto('/single-product');">
+                <h1>Серебрянный Щит</h1>
+                <h2>Добавки</h2>
+                <h3>$30.00 <span>$40.00</span></h3>
+                <div>
+                    <a href="" class="btn btn-green">В корзину</a>
+                    <a href="/checkout" class="btn btn-gray">Купить</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <img src="img/item.jpg" alt="" onclick="goto('/single-product');">
+                <h1>Серебрянный Щит</h1>
+                <h2>Добавки</h2>
+                <h3>$30.00 <span>$40.00</span></h3>
+                <div>
+                    <a href="" class="btn btn-green">В корзину</a>
+                    <a href="/checkout" class="btn btn-gray">Купить</a>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <section id="posts" class="embed"style="background: #fff; padding-top: 0rem;">
+        <div class="posts row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="post flex">
+                    <img src="img/face.jpg" alt="" onclick="goto('/single-post');">
+                    <h1>Проблема ожирения и избыточный веса</h1>
+                    <p>Согласно последних данных Росздравнадора показатели заболеваемости ...</p>
+                    <a href="/single-post" class="btn btn-green">Подробнее</a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="post flex">
+                    <img src="img/sick.jpg" alt="" onclick="goto('/single-post');">
+                    <h1>Проблема ожирения и избыточный веса</h1>
+                    <p>Согласно последних данных Росздравнадора показатели заболеваемости ...</p>
+                    <a href="/single-post" class="btn btn-green">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+        function goto(url) { window.location.href = url; }
+        
+        $(".cat").click((event) => {
+            var ccat = $(event.currentTarget);
+            var cat = ccat.attr("cat");
+            ccat.toggleClass("active");
+            $(".sub").each(function (index) {
+                console.log(index);
+                if ($(this).attr("sub") == cat) {
+                    $(this).toggleClass("open");
+                }
+            });
+        });
+    </script>
+<% include footer %>

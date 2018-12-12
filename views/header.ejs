@@ -1,0 +1,95 @@
+<html>
+
+<head>
+    <title>NSP | Главная страница</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; }
+        .loading p { margin-top: 1rem; font-size: 1.125rem; text-align: center; }
+        .loading img { height: 4rem; }
+        .line { position: absolute; bottom: 0; right: 0; width: 1rem; height: 1vh;
+            background: #89c242; -webkit-animation: loads 1s forwards;
+            animation: loads 1s forwards; -moz-animation: loads 1s forwards; }
+        .loading.loaded { opacity: 0; }  
+        .loading { width: 100%; position: fixed; top: 0; left: 0; height: 100vh; 
+            background: #fff; z-index: 100; display: flex; justify-content: center;
+            align-items: center; flex-direction: column; transition: all .5s ease; }
+        
+        @-webkit-keyframes loads { from { height: 1vh; } to { height: 100vh; } }
+        @keyframes loads { from { height: 1vh; } to { height: 100vh; } }
+    </style>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/grid.css" type="text/css">
+    <link rel="shortcut icon" type="image/png" href="/leaf.png"/>
+</head>
+
+<body>
+    <div class="loading" id="loader">
+        <img src="/svg/leaf.svg">
+        <p style="color: #89c242;">Nature's Sunshine</p>
+        <div class="line loads"></div>
+    </div>
+    
+    <div class="overlay hidden" id="overlay">
+        <img id="cancel" src="svg/cancel-white.svg">
+        <a href="/">Главная</a>
+        <a href="/products">Продукты</a>
+        <a href="/complex">Программы</a>
+        <a href="/posts">Статьи</a>
+        <a href="/contacts">Контакты</a>
+    </div>
+    
+    <div id="cart" class="closed transparent">
+        <div class="cart" id="cartBox">
+            <div>
+                <img src="img/item.jpg">
+                <p><span>Гель серебрянный щит</span> - $30</p>
+                <button><img src="svg/cancel.svg"></button>
+            </div>
+            <div>
+                <img src="img/item.jpg">
+                <p><span>Гель серебрянный щит</span> - $30</p>
+                <button><img src="svg/cancel.svg"></button>
+            </div>
+            <a href="/checkout" class="btn btn-green">Оформить заказ</a>
+        </div>
+    </div>
+    
+    <section id="topbar">
+        <div class="topbar flex">
+            <div><img src="svg/phone.svg"> +7 (777) 123-45-67</div>
+            <div>
+                <p></p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="navbar">
+        <div class="navbar flex">
+            <img class="desktoplogo" src="svg/logo.svg" alt="logo">
+            <img class="mobile" src="svg/logo-short.svg" alt="logo">
+            <div class="menu flex">
+                <a class="desktop" href="/">Главная</a>
+                <a class="desktop" href="/products">Продукты</a>
+                <a class="desktop" href="/complex">Программы</a>
+                <a class="desktop" href="/posts">Статьи</a>
+                <a class="desktop" href="/contacts">Контакты</a>
+                <div class="hamhandler" id="menu">
+                    <div id="hamb" class="hamburger">
+                        <div id="nav-icon4">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <button id="search" class="search"><img src="svg/search.svg"></button>
+                <form action="search" method="POST" class="search-field" id="searchField">
+                    <input name="query" id="searchInput" placeholder="Поиск..." type="text">
+                </form>
+                <button id="cartbutt" class="cartbutt"><img src="svg/cart.svg"></button>
+            </div>
+        </div>
+    </section>

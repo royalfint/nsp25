@@ -1,0 +1,132 @@
+    <section id="footer">
+        <div class="footer flex row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <img src="svg/logo.svg" class="logo" alt="">
+                <p>Тут должно быть какое-то описание
+                    компании и все дела. Текст должен
+                    иметь какой-то смысл ну и все дела.</p>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <h1>Наша политика</h1>
+                <a href="#">Часто задаваемые вопросы</a>
+                <a href="#">Политика конфиденциальности</a>
+                <a href="#">Политика куки</a>
+                <a href="#">Условия соглашения</a>
+                <a href="#">Доставка и Возвраты</a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <h1>Последние новости</h1>
+                <a href="#">Как лечить грипп дома</a>
+                <a href="#">Какой завтрак лучше для хорошего старта дня</a>
+                <a href="#">Все о био добавках</a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <h1>Получите скидку 20%</h1>
+                <p>У вас есть возможность получить
+                    скидку на все товары в размере 20%.</p>
+                <a href="/discount" class="btn btn-green">Получить скидку</a>
+            </div>
+            <div class="col-xs-12">
+                <p class="copy">© 2018 Nsp25. Все права защищены. Сайт создан командой <a target="_blank" href="https://www.mangi.kz">mangi.kz</a></p>
+            </div>
+        </div>
+    </section>
+    <script>
+        var last_known_scroll_position = 0;
+        var ticking = false;
+        var isopen = false;
+        var x;
+        var topmenu;
+
+        function doSomething(scroll_pos) {
+            var rast = topmenu.clientHeight;
+            if (scroll_pos > rast) {         
+                x.classList.add("blacked");
+            } else {
+                x.classList.remove("blacked");
+            }
+        }
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            var loader =  document.getElementById("loader");
+            var search = document.getElementById("search");
+            x = document.getElementById("navbar");
+            topmenu = document.getElementById("topbar");
+            var searchField = document.getElementById("searchField");
+            var searchInput = document.getElementById("searchInput");
+            var cartbutt = document.getElementById("cartbutt");
+            var cart = document.getElementById("cart");
+            var menu = document.getElementById("menu");
+            var hamb = document.getElementById("nav-icon4");
+            var cancel = document.getElementById("cancel");
+            var overlay = document.getElementById("overlay");
+            
+            var isSearching = false;
+            
+            search.onclick = function (e) {
+                if (!isSearching) {
+                    void search.offsetWidth;
+                    searchField.classList.add("show");
+                    isSearching = true;
+                } else {
+                    if(searchInput.value == "") {
+                        void search.offsetWidth;
+                        searchField.classList.remove("show");
+                        isSearching = false;
+                    } else {
+                        searchField.submit();
+                    }
+                }
+            };
+            
+            menu.onclick = function (e) {
+                hamb.classList.add("open");
+                overlay.classList.remove("hidden");
+                void overlay.offsetWidth;
+                overlay.classList.add("open");
+                void overlay.offsetWidth;
+            };
+            
+            cancel.onclick = function (e) {
+                hamb.classList.remove("open");
+                overlay.classList.remove("open");  
+                void overlay.offsetWidth;
+                overlay.classList.add("hidden");
+            };
+            
+            cartbutt.onclick = function(e) {
+                cart.classList.remove("closed");
+                void cart.offsetWidth;
+                cart.classList.remove("transparent");
+            };
+            
+            cart.onclick = function(e) {
+                if(!e.target.closest("#cartBox")){
+                    cart.classList.add("transparent");
+                    void cart.offsetWidth;
+                    setTimeout(() => { cart.classList.add("closed");  }, 300);
+                }
+            };
+            
+            window.addEventListener('scroll', function (e) {
+                last_known_scroll_position = window.scrollY;
+                if (!ticking) {
+                    window.requestAnimationFrame(function () {
+                        doSomething(last_known_scroll_position);
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+            
+            setTimeout(() => {
+                loader.classList.add("loaded");
+                setTimeout(() => {
+                    loader.style.display = "none";
+                }, 500)
+            }, 1000);
+        });
+    </script>
+</body>
+
+</html>

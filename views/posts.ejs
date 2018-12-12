@@ -1,0 +1,73 @@
+<% include header %>
+
+    <section id="bread">
+        <div class="bread flex">
+            <div>
+                <p><a href="/">Главная</a> / Статьи</p>
+            </div>
+        </div>
+    </section> 
+ 
+    <section id="posts">
+        <div class="posts row">
+            <div class="col-xs-12">
+                <div class="post-filter flex">
+                    <button class="active">Все</button>
+                    <button>БАД</button>
+                    <button>Лечение</button>
+                    <button>Рецепты</button>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="post flex">
+                    <img src="img/fat.jpg" alt="" onclick="goto('/single-post');">
+                    <h1>Проблема ожирения и избыточный веса</h1>
+                    <p>Согласно последних данных Росздравнадора показатели заболеваемости ...</p>
+                    <a href="/single-post" class="btn btn-gray">Подробнее</a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="post flex">
+                    <img src="img/face.jpg" alt="" onclick="goto('/single-post');">
+                    <h1>Проблема ожирения и избыточный веса</h1>
+                    <p>Согласно последних данных Росздравнадора показатели заболеваемости ...</p>
+                    <a href="/single-post" class="btn btn-gray">Подробнее</a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="post flex">
+                    <img src="img/glass.jpg" alt="" onclick="goto('/single-post');">
+                    <h1>Проблема ожирения и избыточный веса</h1>
+                    <p>Согласно последних данных Росздравнадора показатели заболеваемости ...</p>
+                    <a href="/single-post" class="btn btn-gray">Подробнее</a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="post flex">
+                    <img src="img/sick.jpg" alt="" onclick="goto('/single-post');">
+                    <h1>Проблема ожирения и избыточный веса</h1>
+                    <p>Согласно последних данных Росздравнадора показатели заболеваемости ...</p>
+                    <a href="/single-post" class="btn btn-gray">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+        function goto(url) { window.location.href = url; }
+        
+        $(".cat").click((event) => {
+            var ccat = $(event.currentTarget);
+            var cat = ccat.attr("cat");
+            ccat.toggleClass("active");
+            $(".sub").each(function (index) {
+                console.log(index);
+                if ($(this).attr("sub") == cat) {
+                    $(this).toggleClass("open");
+                }
+            });
+        });
+    </script>
+<% include footer %>
