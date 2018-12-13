@@ -20,20 +20,20 @@
         @-webkit-keyframes loads { from { height: 1vh; } to { height: 100vh; } }
         @keyframes loads { from { height: 1vh; } to { height: 100vh; } }
     </style>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/grid.css" type="text/css">
-    <link rel="shortcut icon" type="image/png" href="/leaf.png"/>
+    <link rel="stylesheet" href="<%= url %>/css/style.css">
+    <link rel="stylesheet" href="<%= url %>/css/grid.css" type="text/css">
+    <link rel="shortcut icon" type="image/png" href="<%= url %>/leaf.png"/>
 </head>
 
 <body>
     <div class="loading" id="loader">
-        <img src="/svg/leaf.svg">
+        <img src="<%= url %>/svg/leaf.svg">
         <p style="color: #89c242;">Nature's Sunshine</p>
         <div class="line loads"></div>
     </div>
     
     <div class="overlay hidden" id="overlay">
-        <img id="cancel" src="svg/cancel-white.svg">
+        <img id="cancel" src="<%= url %>/svg/cancel-white.svg">
         <a href="/">Главная</a>
         <a href="/products">Продукты</a>
         <a href="/complex">Программы</a>
@@ -44,14 +44,14 @@
     <div id="cart" class="closed transparent">
         <div class="cart" id="cartBox">
             <div>
-                <img src="img/item.jpg">
+                <img src="<%= url %>/img/item.jpg">
                 <p><span>Гель серебрянный щит</span> - $30</p>
-                <button><img src="svg/cancel.svg"></button>
+                <button><img src="<%= url %>/svg/cancel.svg"></button>
             </div>
             <div>
-                <img src="img/item.jpg">
+                <img src="<%= url %>/img/item.jpg">
                 <p><span>Гель серебрянный щит</span> - $30</p>
-                <button><img src="svg/cancel.svg"></button>
+                <button><img src="<%= url %>/svg/cancel.svg"></button>
             </div>
             <a href="/checkout" class="btn btn-green">Оформить заказ</a>
         </div>
@@ -59,7 +59,7 @@
     
     <section id="topbar">
         <div class="topbar flex">
-            <div><img src="svg/phone.svg"> +7 (777) 123-45-67</div>
+            <div><img src="<%= url %>/svg/phone.svg"> +7 (777) 123-45-67</div>
             <div>
                 <p></p>
             </div>
@@ -68,8 +68,8 @@
     
     <section id="navbar">
         <div class="navbar flex">
-            <img class="desktoplogo" src="svg/logo.svg" alt="logo">
-            <img class="mobile" src="svg/logo-short.svg" alt="logo">
+            <img class="desktoplogo" src="<%= url %>/svg/logo.svg" alt="logo">
+            <img class="mobile" src="<%= url %>/svg/logo-short.svg" alt="logo">
             <div class="menu flex">
                 <a class="desktop" href="/">Главная</a>
                 <a class="desktop" href="/products">Продукты</a>
@@ -85,11 +85,11 @@
                         </div>
                     </div>
                 </div>
-                <button id="search" class="search"><img src="svg/search.svg"></button>
+                <button id="search" class="search"><img src="<%= url %>/svg/search.svg"></button>
                 <form action="search" method="POST" class="search-field" id="searchField">
                     <input name="query" id="searchInput" placeholder="Поиск..." type="text">
                 </form>
-                <button id="cartbutt" class="cartbutt"><img src="svg/cart.svg"></button>
+                <button id="cartbutt" class="cartbutt"><img src="<%= url %>/svg/cart.svg"></button>
             </div>
         </div>
     </section>

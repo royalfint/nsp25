@@ -18,8 +18,7 @@
                     <button class="sub" sub="cosm">Tropical Mists</button>
                     <button class="sub" sub="cosm">Косметика Natria</button>
                     <button class="sub">Bremani Care</button>
-                    <button class="cat" cat="care">Уход и гигиена<img src="svg/down-arrow.svg"></button>
-                    <button class="sub" sub="care">Подкатегория</button>
+                    <button>Уход и гигиена<img src="svg/down-arrow.svg"></button>
                     <button>Акции<img src="svg/down-arrow.svg"></button>
                     <button>БАД<img src="svg/down-arrow.svg"></button>
                     <button>Косметика Bremani<img src="svg/down-arrow.svg"></button>
@@ -37,66 +36,18 @@
                 </div>
             </div>
             <div class="row loop">
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <img src="img/item.jpg" alt="" onclick="goto('/single-product');">
-                    <h1>Серебрянный Щит</h1>
-                    <h2>Добавки</h2>
-                    <h3>$30.00 <span>$40.00</span></h3>
-                    <div>
-                        <a href="" class="btn btn-green">В корзину</a>
-                        <a href="/checkout" class="btn btn-gray">Купить</a>
+                <% products.forEach(function(product) { %>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <img src="<%= product.image %>" alt="" onclick="goto('/products/<%= product._id %>');">
+                        <h1><%= product.name %></h1>
+                        <h2><%= product.cat %></h2>
+                        <h3>$<%= product.price %>.00 <span>$<%= product.price * 1.2 %>.00</span></h3>
+                        <div>
+                            <a href="" class="btn btn-green">В корзину</a>
+                            <a href="/checkout" class="btn btn-gray">Купить</a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <img src="img/item.jpg" alt="" onclick="goto('/single-product');">
-                    <h1>Серебрянный Щит</h1>
-                    <h2>Добавки</h2>
-                    <h3>$30.00 <span>$40.00</span></h3>
-                    <div>
-                        <a href="" class="btn btn-green">В корзину</a>
-                        <a href="/checkout" class="btn btn-gray">Купить</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <img src="img/item.jpg" alt="" onclick="goto('/single-product');">
-                    <h1>Серебрянный Щит</h1>
-                    <h2>Добавки</h2>
-                    <h3>$30.00 <span>$40.00</span></h3>
-                    <div>
-                        <a href="" class="btn btn-green">В корзину</a>
-                        <a href="/checkout" class="btn btn-gray">Купить</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <img src="img/item.jpg" alt="" onclick="goto('/single-product');">
-                    <h1>Серебрянный Щит</h1>
-                    <h2>Добавки</h2>
-                    <h3>$30.00 <span>$40.00</span></h3>
-                    <div>
-                        <a href="" class="btn btn-green">В корзину</a>
-                        <a href="/checkout" class="btn btn-gray">Купить</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <img src="img/item.jpg" alt="" onclick="goto('/single-product');">
-                    <h1>Серебрянный Щит</h1>
-                    <h2>Добавки</h2>
-                    <h3>$30.00 <span>$40.00</span></h3>
-                    <div>
-                        <a href="" class="btn btn-green">В корзину</a>
-                        <a href="/checkout" class="btn btn-gray">Купить</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <img src="img/item.jpg" alt="" onclick="goto('/single-product');">
-                    <h1>Серебрянный Щит</h1>
-                    <h2>Добавки</h2>
-                    <h3>$30.00 <span>$40.00</span></h3>
-                    <div>
-                        <a href="" class="btn btn-green">В корзину</a>
-                        <a href="/checkout" class="btn btn-gray">Купить</a>
-                    </div>
-                </div>
+                <% }); %>
             </div>
         </div>
     </section>

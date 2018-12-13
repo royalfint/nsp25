@@ -1,0 +1,10 @@
+{"list": [
+    { "name": "Уход и гигиена" },
+    { "name": "Ухаживающая косметика", "sub": [
+        "Косметика Natria",
+        "Tropical Mists",
+        "Bremani Care"
+    ]},
+    { "name": "БАД" },
+    { "name": "Косметика Bremani" }
+]}

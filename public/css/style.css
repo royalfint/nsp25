@@ -246,7 +246,7 @@ section > div { width: 72rem; padding-right: 1rem !important;
  
 /********* SINGLE PRODUCT  **********/
 .product { background: #fff; width: 54rem; }
-.product > span > img { width: 25rem; }
+.product > span > img { width: 25rem; opacity: 0.8; }
 .product > div { box-sizing: border-box; padding: 1.5rem; }
 .product h1 { color: #222; font-weight: 600; }
 .product h2 { color: #a09fa0; font-size: .8rem; margin: .5rem 0 1rem 0; }

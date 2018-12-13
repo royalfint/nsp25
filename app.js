@@ -10,10 +10,14 @@ var express        = require("express"),
 var User           = require("./models/user"),
     Product        = require("./models/product");
     
-var indexRoutes    = require("./routes/index");
+var indexRoutes    = require("./routes/index"),
+    dashRoutes     = require("./routes/dashboard"),
+    productRoutes  = require("./routes/products"),
+    authRoutes     = require("./routes/auth");
 
+mongoose.connect("mongodb://nspadmin:YtEpyftimVjq1Gfhjkm@ds119024.mlab.com:19024/nsp25", { useNewUrlParser: true } );
 global.siteurl = "https://nsp25-royalfint.c9users.io";
-//global.siteurl = "https://www.bazarlar.kz";
+//global.siteurl = "https://nsp25.herokuapp.com";
 
 var app = express();
 app.use(require("express-session")({
@@ -41,6 +45,9 @@ app.use(function(req, res, next){
 });
 
 app.use(indexRoutes);
+app.use(authRoutes);
+app.use("/dashboard", dashRoutes);
+app.use("/dashboard/products", productRoutes);
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server has been started!");
