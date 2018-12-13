@@ -16,8 +16,8 @@ var indexRoutes    = require("./routes/index"),
     authRoutes     = require("./routes/auth");
 
 mongoose.connect("mongodb://nspadmin:YtEpyftimVjq1Gfhjkm@ds119024.mlab.com:19024/nsp25", { useNewUrlParser: true } );
-global.siteurl = "https://nsp25-royalfint.c9users.io";
-//global.siteurl = "https://nsp25.herokuapp.com";
+//global.siteurl = "https://nsp25-royalfint.c9users.io";
+global.siteurl = "https://nsp25.herokuapp.com";
 
 var app = express();
 app.use(require("express-session")({
