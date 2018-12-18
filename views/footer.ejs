@@ -12,7 +12,7 @@
                 <a href="#">Политика конфиденциальности</a>
                 <a href="#">Политика куки</a>
                 <a href="#">Условия соглашения</a>
-                <a href="#">Доставка и Возвраты</a>
+                <a href="/dashboard">Панель управления</a>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <h1>Последние новости</h1>
@@ -40,12 +40,15 @@
 
         function doSomething(scroll_pos) {
             var rast = topmenu.clientHeight;
-            if (scroll_pos > rast) {         
-                x.classList.add("blacked");
-            } else {
-                x.classList.remove("blacked");
-            }
+            if (scroll_pos > rast) { x.classList.add("blacked");
+                } else { x.classList.remove("blacked"); }
         }
+        
+        function goto(url) { window.location.href = url; }
+        function sort(cat) { window.location.href = "/products?cat=" + cat; }
+        function subsort(cat, sub) { window.location.href = "/products?cat=" + cat + "&sub=" + sub; }
+        function addtocart(id, amount) { window.location.href = ""; }
+        function rmfromcart(name) { window.location.href= "/rmfromcart?name=" + name; }
         
         document.addEventListener("DOMContentLoaded", function () {
             var loader =  document.getElementById("loader");
@@ -127,6 +130,43 @@
             }, 1000);
         });
     </script>
-</body>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script>
+        $(".cat").click((event) => {
+            var ccat = $(event.currentTarget);
+            var cat = ccat.attr("cat");
+            ccat.toggleClass("active");
+            $(".sub").each(function(index) {
+                console.log(index);
+                if ($(this).attr("sub") == cat) {
+                    $(this).toggleClass("open");
+                }
+            });
+        });
 
+        /*
+        $("#callmebacksubmit").click((e) => {
+            e.preventDefault();
+            $.ajax({
+                url: "/callmeback",
+                type: "POST",
+                dataType: "json",
+                data: {"phone": $("#phone").val() },
+                success: function(data){
+                    console.log(data);
+                    $("#callmeresponse").removeClass("show");
+                    $("#callmeerror").removeClass("show");
+                    if(data.data === 1) {
+                        $("#callmeresponse").addClass("show");
+                    } else {
+                        $("#callmeerror").html(data.message).addClass("show");
+                    }
+                },
+                error: function(error){ console.log(error); }
+            });
+        });
+        */
+    </script>
+</body>
 </html>

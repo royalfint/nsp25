@@ -43,16 +43,15 @@
     
     <div id="cart" class="closed transparent">
         <div class="cart" id="cartBox">
+            <% if(cart) { cart.forEach(function(item) { %>
             <div>
-                <img src="<%= url %>/img/item.jpg">
-                <p><span>Гель серебрянный щит</span> - $30</p>
-                <button><img src="<%= url %>/svg/cancel.svg"></button>
+                <div>
+                    <img src="<%= item.image %>">
+                    <p><span><%= item.name %></span> - $<%= item.price %>.00</p>
+                </div>
+                <button onclick="rmfromcart('<%= item.name %>')"><img src="<%= url %>/svg/cancel.svg"></button>
             </div>
-            <div>
-                <img src="<%= url %>/img/item.jpg">
-                <p><span>Гель серебрянный щит</span> - $30</p>
-                <button><img src="<%= url %>/svg/cancel.svg"></button>
-            </div>
+            <% }); } %>
             <a href="/checkout" class="btn btn-green">Оформить заказ</a>
         </div>
     </div>

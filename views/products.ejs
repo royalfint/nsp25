@@ -14,16 +14,16 @@
                 <div>
                     <h1>Категории</h1>
                     <button class="cat" cat="cosm">Ухаживающая косметика<img src="svg/down-arrow.svg"></button>
-                    <button class="sub" sub="cosm">Косметика Natria</button>
-                    <button class="sub" sub="cosm">Tropical Mists</button>
-                    <button class="sub" sub="cosm">Косметика Natria</button>
+                    <button onclick="subsort('Ухаживающая косметика','Косметика Natria')" class="sub" sub="cosm">Косметика Natria</button>
+                    <button onclick="subsort('Ухаживающая косметика','Tropical Mists')" class="sub" sub="cosm">Tropical Mists</button>
+                    <button onclick="subsort('Ухаживающая косметика','Bremani Care')" class="sub" sub="cosm">Bremani Care</button>
                     <button class="sub">Bremani Care</button>
-                    <button>Уход и гигиена<img src="svg/down-arrow.svg"></button>
-                    <button>Акции<img src="svg/down-arrow.svg"></button>
-                    <button>БАД<img src="svg/down-arrow.svg"></button>
-                    <button>Косметика Bremani<img src="svg/down-arrow.svg"></button>
-                    <button>Печатная продукция<img src="svg/down-arrow.svg"></button>
-                    <button>Сувенирная продукция<img src="svg/down-arrow.svg"></button>
+                    <button onclick="sort('Уход и гигиена')">Уход и гигиена</button>
+                    <button>Акции</button>
+                    <button>БАД</button>
+                    <button onclick="sort('Косметика Bremani')">Косметика Bremani</button>
+                    <button>Печатная продукция</button>
+                    <button>Сувенирная продукция</button>
                 </div>
                 <div>
                     <h1>Критерии</h1>
@@ -43,30 +43,13 @@
                         <h2><%= product.cat %></h2>
                         <h3>$<%= product.price %>.00 <span>$<%= product.price * 1.2 %>.00</span></h3>
                         <div>
-                            <a href="" class="btn btn-green">В корзину</a>
-                            <a href="/checkout" class="btn btn-gray">Купить</a>
+                            <a href="/addtocart?product=<%= product._id %>" class="btn btn-green">В корзину</a>
+                            <a href="/checkout?product=<%= product._id %>" class="btn btn-gray">Купить</a>
                         </div>
                     </div>
                 <% }); %>
             </div>
         </div>
     </section>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script>
-        function goto(url) { window.location.href = url; }
-        
-        $(".cat").click((event) => {
-            var ccat = $(event.currentTarget);
-            var cat = ccat.attr("cat");
-            ccat.toggleClass("active");
-            $(".sub").each(function(index) {
-                console.log(index);
-                if ($(this).attr("sub") == cat) {
-                    $(this).toggleClass("open");
-                }
-            });
-        });
-    </script>
     
 <% include footer %>

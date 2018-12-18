@@ -157,8 +157,10 @@ section > div { width: 72rem; padding-right: 1rem !important;
     background: rgba(0,0,0,0.7); transition: all .3s ease; z-index: 10; opacity: 1; }
 .cart { background: #fff; padding: 2rem; display: flex; flex-direction: column;
     align-items: flex-start; }
-.cart > div { display: flex; margin-bottom: 1rem; align-items: center; }
-.cart > div > img { height: 3rem; margin-right: 1rem; }
+.cart > div { display: flex; margin-bottom: 1rem; align-items: center; width: 100%;
+    justify-content: space-between; }
+.cart > div > div { display: flex; align-items: center; }
+.cart > div > div > img { height: 3rem; margin-right: 1rem; }
 .cart p span { font-weight: 600; }
 .cart button { border: 0; background: transparent; outline: none; }
 .cart button img { height: 1.25rem; margin-left: 1rem; cursor: pointer; }
@@ -211,7 +213,7 @@ section > div { width: 72rem; padding-right: 1rem !important;
 #products { background: #eef1ef; padding-top: 3rem; padding-bottom: 3rem; }
 .products { justify-content: space-between; align-items: flex-start; }
 .products .loop { width: 54rem; background: #fff; padding: 1rem .5em 0 .5rem; 
-    box-sizing: border-box; }
+    box-sizing: border-box; min-height: 12.25rem; }
 
 /********* FILTERS WIDGET **********/
 .filters { width: 16.5rem; padding-right: 1rem; box-sizing: border-box;
@@ -333,7 +335,8 @@ section > div { width: 72rem; padding-right: 1rem !important;
 .footer img.logo { width: 9rem; margin-bottom: .9rem; position: relative; top:-.2rem; }
 .footer p { font-size: .9rem; color: #adadad; }
 .footer a { font-size: .9rem; color: #adadad; margin-bottom: .5rem;
-    text-decoration: none; }
+    text-decoration: none; cursor: pointer; transition: all .3s ease; }
+.footer a:hover { color: #fff; }
 .footer h1 { font-size: .9rem; text-transform: uppercase; color: #fff;
     margin-bottom: 1rem; font-weight: 600; line-height: 140%; }
 .footer a.btn { color: #fff; margin: 1rem 0 0 0; }

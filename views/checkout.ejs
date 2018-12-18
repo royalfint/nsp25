@@ -48,20 +48,15 @@
         </div>
         <div class="col-md-6 col-sm-12 col-xs-12">
             <div class="buyList">
+                <% if(cart) { cart.forEach(function(item) { %>
                 <div>
                     <div>
-                        <img src="img/item.jpg">
-                        <p><span>Гель серебрянный щит</span> - $30</p>
+                        <img src="<%= item.image %>">
+                        <p><span><%= item.name %></span> - $<%= item.price %>.00</p>
                     </div>
-                    <button><img src="svg/cancel.svg"></button>
+                    <button><img src="<%= url %>/svg/cancel.svg"></button>
                 </div>
-                <div>
-                    <div>
-                        <img src="img/item.jpg">
-                        <p><span>Гель серебрянный щит</span> - $30</p>
-                    </div>
-                    <button><img src="svg/cancel.svg"></button>
-                </div>
+                <% }); } %>
                 <div></div>
                 <div>
                     <p>Итого: $60</p>

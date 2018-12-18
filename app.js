@@ -16,8 +16,8 @@ var indexRoutes    = require("./routes/index"),
     authRoutes     = require("./routes/auth");
 
 mongoose.connect("mongodb://nspadmin:YtEpyftimVjq1Gfhjkm@ds119024.mlab.com:19024/nsp25", { useNewUrlParser: true } );
-//global.siteurl = "https://nsp25-royalfint.c9users.io";
-global.siteurl = "https://nsp25.herokuapp.com";
+global.siteurl = "https://nsp25-royalfint.c9users.io";
+//global.siteurl = "https://nsp25.herokuapp.com";
 
 var app = express();
 app.use(require("express-session")({
@@ -36,12 +36,13 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.use(function(req, res, next){
-   res.locals.currentUser = req.user;
-   res.locals.error = req.flash("error");
-   res.locals.success = req.flash("success");
-   res.locals.url = global.siteurl;
-   res.locals.status = req.session.status;
-   next();
+    res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
+    res.locals.url = global.siteurl;
+    res.locals.status = req.session.status;
+    res.locals.cart = req.session.cart;
+    next();
 });
 
 app.use(indexRoutes);
