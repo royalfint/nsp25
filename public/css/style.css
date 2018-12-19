@@ -277,6 +277,7 @@ section > div { width: 72rem; padding-right: 1rem !important;
     box-sizing: border-box;}
 .message.err { background-color: #f2dede; border-color: #ebcccc; color: #a94442; }
 .message.suc { background-color: #dff0d8; border-color: #d0e9c6; color: #3c763d; }
+strong { font-weight: 800; }
 
 /********* POSTS PAGE **********/
 #posts { background: #eef1ef; padding-top: 3rem; padding-bottom: 1rem; }
