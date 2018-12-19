@@ -13,27 +13,23 @@
             <div class="filters flex">
                 <div>
                     <h1>Категории</h1>
-                    <button class="cat" cat="cosm">Ухаживающая косметика<img src="<%= url %>/svg/down-arrow.svg"></button>
-                    <button class="sub" sub="cosm">Косметика Natria</button>
-                    <button class="sub" sub="cosm">Tropical Mists</button>
-                    <button class="sub" sub="cosm">Косметика Natria</button>
-                    <button class="sub">Bremani Care</button>
-                    <button class="cat" cat="care">Уход и гигиена<img src="<%= url %>/svg/down-arrow.svg"></button>
-                    <button class="sub" sub="care">Подкатегория</button>
-                    <button>Акции<img src="<%= url %>/svg/down-arrow.svg"></button>
-                    <button>БАД<img src="<%= url %>/svg/down-arrow.svg"></button>
-                    <button>Косметика Bremani<img src="<%= url %>/svg/down-arrow.svg"></button>
-                    <button>Печатная продукция<img src="<%= url %>/svg/down-arrow.svg"></button>
-                    <button>Сувенирная продукция<img src="<%= url %>/svg/down-arrow.svg"></button>
+                    <button class="cat" cat="cosm">Ухаживающая косметика<img src="svg/down-arrow.svg"></button>
+                    <button onclick="subsort('Ухаживающая косметика','Косметика Natria')" class="sub" sub="cosm">Косметика Natria</button>
+                    <button onclick="subsort('Ухаживающая косметика','Tropical Mists')" class="sub" sub="cosm">Tropical Mists</button>
+                    <button onclick="subsort('Ухаживающая косметика','Bremani Care')" class="sub" sub="cosm">Bremani Care</button>
+                    <button class="cat" onclick="sort('Уход и гигиена')">Уход и гигиена</button>
+                    <button class="cat" onclick="sort('Акции')">Акции</button>
+                    <button class="cat" onclick="sort('БАД')">БАД</button>
+                    <button class="cat" onclick="sort('Косметика Bremani')">Косметика Bremani</button>
+                    <button class="cat" onclick="sort('Печатная продукция')">Печатная продукция</button>
+                    <button class="cat" onclick="sort('Сувенирная продукция')">Сувенирная продукция</button>
                 </div>
                 <div>
                     <h1>Критерии</h1>
-                    <button>Количество отзывов</button>
-                    <button>Популярность</button>
-                    <button>Рейтинг</button>
-                    <button>Сначала дешевые</button>
-                    <button>Сначала дорогие</button>
-                    <button>По алфавиту</button>
+                    <button onclick="sortProds('views')">Популярность</button>
+                    <button onclick="sortProds('cheap')">Сначала дешевые</button>
+                    <button onclick="sortProds('expensive')">Сначала дорогие</button>
+                    <button onclick="sortProds('name')">По алфавиту</button>
                 </div>
             </div>
             <div>

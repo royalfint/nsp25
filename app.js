@@ -15,11 +15,14 @@ var indexRoutes    = require("./routes/index"),
     productRoutes  = require("./routes/products"),
     authRoutes     = require("./routes/auth");
 
+var app = express(),
+    redirect  = require('express-http-to-https').redirectToHTTPS;
+
 mongoose.connect("mongodb://nspadmin:YtEpyftimVjq1Gfhjkm@ds119024.mlab.com:19024/nsp25", { useNewUrlParser: true } );
 //global.siteurl = "https://nsp25-royalfint.c9users.io";
-global.siteurl = "https://nsp25.herokuapp.com";
+global.siteurl = "https://www.nsp25.kz";
 
-var app = express();
+app.use(redirect([/localhost:(\d{4})/], [/\/insecure/], 301));
 app.use(require("express-session")({
     secret: "Once again Rusty wins cutest dog!",
     resave: false,

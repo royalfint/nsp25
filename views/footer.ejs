@@ -46,9 +46,9 @@
         
         function goto(url) { window.location.href = url; }
         function sort(cat) { window.location.href = "/products?cat=" + cat; }
+        function sortProds(cat) { window.location.href = "/sortProds?sort=" + cat; }
         function subsort(cat, sub) { window.location.href = "/products?cat=" + cat + "&sub=" + sub; }
-        function addtocart(id, amount) { window.location.href = ""; }
-        function rmfromcart(name) { window.location.href= "/rmfromcart?name=" + name; }
+        function rmfromcart(name) { window.location.href = "/rmfromcart?name=" + name; }
         
         document.addEventListener("DOMContentLoaded", function () {
             var loader =  document.getElementById("loader");
@@ -133,16 +133,50 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script>
+        <% if (locals.cat) { %>
+        $(".cat:contains('<%= cat %>')").each(function(){
+            $(this).addClass("active");
+        });
+        <% } %>
+        
+        <% if (locals.sub) { %>
+        $(".sub:contains('<%= sub %>')").each(function(){
+           $(this).addClass("active");
+        });
+        <% } %>
+        
+        $(".cat.active").each(function() {
+            console.log("THere is .cat.active!");
+            var cat = $(this).attr("cat");
+            $(".sub").each(function(index) {
+                console.log(index);
+                if ($(this).attr("sub") == cat) {
+                    $(this).addClass("open");
+                }
+            });
+        });
+        
         $(".cat").click((event) => {
             var ccat = $(event.currentTarget);
-            var cat = ccat.attr("cat");
             ccat.toggleClass("active");
+            var cat = ccat.attr("cat");
             $(".sub").each(function(index) {
                 console.log(index);
                 if ($(this).attr("sub") == cat) {
                     $(this).toggleClass("open");
                 }
             });
+        });
+    
+        $("#confirmOrder").click(function(){
+            var products = "";
+            
+            <% if (locals.cart) { cart.forEach(function(item){ %>
+            products += "<%= item.name %>, ";
+            <% }); } %>
+            
+            $("#products").val(products);
+            $("#checkoutform").submit();
         });
 
         /*

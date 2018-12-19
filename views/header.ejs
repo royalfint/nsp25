@@ -51,14 +51,16 @@
                 </div>
                 <button onclick="rmfromcart('<%= item.name %>')"><img src="<%= url %>/svg/cancel.svg"></button>
             </div>
-            <% }); } %>
+            <% }); } else { %>
+                <p style="text-align: center; width: 100%;">Корзина пуста</p><br>
+            <% } %>
             <a href="/checkout" class="btn btn-green">Оформить заказ</a>
         </div>
     </div>
     
     <section id="topbar">
         <div class="topbar flex">
-            <div><img src="<%= url %>/svg/phone.svg"> +7 (777) 123-45-67</div>
+            <div><img src="<%= url %>/svg/phone.svg"><p>+7 (777) 123-45-67</p></div>
             <div>
                 <p></p>
             </div>

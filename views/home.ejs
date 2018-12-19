@@ -25,46 +25,21 @@
                     <h1>Последний завоз</h1>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <img src="img/item.jpg" alt="" onclick="goto('/single-product');">
-                <h1>Серебрянный Щит</h1>
-                <h2>Добавки</h2>
-                <h3>$30.00 <span>$40.00</span></h3>
-                <div>
-                    <a href="" class="btn btn-green">В корзину</a>
-                    <a href="/checkout" class="btn btn-gray">Купить</a>
+            <% var i = 0; var st = ""; products.forEach(function(product) { i++; %>
+            <% if (i == 2) st = "third-item"; else st = ""; if (i == 3) st = "fourth-item"; %>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 <%= st %>">
+                    <span>
+                        <img src="<%= product.image %>" alt="" onclick="goto('/products/<%= product._id %>');">
+                    </span>
+                    <h1><%= product.name %></h1>
+                    <h2><%= product.cat %></h2>
+                    <h3>$<%= product.price %>.00 <span>$<%= product.price * 1.2 %>.00</span></h3>
+                    <div>
+                        <a href="/addtocart?product=<%= product._id %>" class="btn btn-green">В корзину</a>
+                        <a href="/buytocart?product=<%= product._id %>" class="btn btn-gray">Купить</a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <img src="img/item.jpg" alt="" onclick="goto('/single-product');">
-                <h1>Серебрянный Щит</h1>
-                <h2>Добавки</h2>
-                <h3>$30.00 <span>$40.00</span></h3>
-                <div>
-                    <a href="" class="btn btn-green">В корзину</a>
-                    <a href="/checkout" class="btn btn-gray">Купить</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 third-item">
-                <img src="img/item.jpg" alt="" onclick="goto('/single-product');">
-                <h1>Серебрянный Щит</h1>
-                <h2>Добавки</h2>
-                <h3>$30.00 <span>$40.00</span></h3>
-                <div>
-                    <a href="" class="btn btn-green">В корзину</a>
-                    <a href="/checkout" class="btn btn-gray">Купить</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 fourth-item">
-                <img src="img/item.jpg" alt="" onclick="goto('/single-product');">
-                <h1>Серебрянный Щит</h1>
-                <h2>Добавки</h2>
-                <h3>$30.00 <span>$40.00</span></h3>
-                <div>
-                    <a href="" class="btn btn-green">В корзину</a>
-                    <a href="/checkout" class="btn btn-gray">Купить</a>
-                </div>
-            </div>
+            <% }); %>
         </div>
     </section>
 
@@ -87,38 +62,17 @@
                 <h2>Будь в курсе</h2>
                 <h1>Самые свежие статьи</h1>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <% var j = 0; var jt = ""; posts.forEach(function(post) { j++; %>
+            <% if (j == 2) st = "third-item"; else st = ""; if (j == 3) st = "fourth-item"; %>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 <%= jt %>">
                 <div class="post flex">
-                    <img src="img/fat.jpg" alt="">
-                    <h1>Проблема ожирения и избыточный веса</h1>
-                    <p>Согласно последних данных Росздравнадора показатели заболеваемости ...</p>
-                    <a href="/single-post" class="btn btn-green">Подробнее</a>
+                    <img src="<%= post.image %>" alt="" onclick="goto('/post/<%= post._id %>');">
+                    <h1><%= post.name %></h1>
+                    <p><%= post.short %></p>
+                    <a href="/post/<%= post._id %>" class="btn btn-green">Подробнее</a>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="post flex">
-                    <img src="img/face.jpg" alt="">
-                    <h1>Проблема ожирения и избыточный веса</h1>
-                    <p>Согласно последних данных Росздравнадора показатели заболеваемости ...</p>
-                    <a href="/single-post" class="btn btn-green">Подробнее</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 third-item">
-                <div class="post flex">
-                    <img src="img/glass.jpg" alt="">
-                    <h1>Проблема ожирения и избыточный веса</h1>
-                    <p>Согласно последних данных Росздравнадора показатели заболеваемости ...</p>
-                    <a href="/single-post" class="btn btn-green">Подробнее</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 fourth-item">
-                <div class="post flex">
-                    <img src="img/sick.jpg" alt="">
-                    <h1>Проблема ожирения и избыточный веса</h1>
-                    <p>Согласно последних данных Росздравнадора показатели заболеваемости ...</p>
-                    <a href="/single-post" class="btn btn-green">Подробнее</a>
-                </div>
-            </div>
+            <% }); %>
         </div>
     </section>
     

@@ -11,57 +11,66 @@
 <section id="checkout">
     <div class="checkout row">
         <div class="col-md-6 col-sm-12 col-xs-12">
-            <form>
+            <form action="checkout" id="checkoutform" method="POST">
                 <div>
                     <p>Ваше имя:</p>
-                    <input type="text" placeholder="Иван">
+                    <input type="text" value="<%= q.f %>" name="firstname" placeholder="Иван">
                 </div>
                 <div>
                     <p>Ваше фамилия:</p>
-                    <input type="text" placeholder="Иванов">
+                    <input type="text" value="<%= q.l %>" name="lastname" placeholder="Иванов">
                 </div>
                 <div>
                     <p>Код партнера (необязательно):</p>
-                    <input type="number" placeholder="304500">
+                    <input type="number" value="<%= q.r %>" name="partner" placeholder="304500">
                 </div>
                 <div>
                     <p>Город:</p>
-                    <input type="text" placeholder="Астана">
+                    <input type="text" value="<%= q.c %>" name="city" placeholder="Астана">
                 </div>
                 <div>
                     <p>Область:</p>
-                    <input type="text" placeholder="Акмолинская">
+                    <input type="text" value="<%= q.a %>" name="area" placeholder="Акмолинская">
                 </div>
                 <div>
                     <p>Адрес:</p>
-                    <input type="text" placeholder="Ташенова 11">
+                    <input type="text" value="<%= q.d %>" name="address" placeholder="Ташенова 11, кв. 10">
                 </div>
                 <div>
                     <p>Почтовый индекс:</p>
-                    <input type="number" placeholder="010000">
+                    <input type="number"  value="<%= q.z %>" name="zip" placeholder="010000">
                 </div>
                 <div>
                     <p>Телефон:</p>
-                    <input type="tel" placeholder="77001234567">
+                    <input type="tel" value="<%= q.t %>" name="phone" placeholder="77001234567">
                 </div>
+                <input type="hidden" value="" name="products" id="products">
             </form>
         </div>
         <div class="col-md-6 col-sm-12 col-xs-12">
             <div class="buyList">
-                <% if(cart) { cart.forEach(function(item) { %>
+                <% var total = 0; if(cart) { cart.forEach(function(item) { total += item.price; %>
                 <div>
                     <div>
                         <img src="<%= item.image %>">
                         <p><span><%= item.name %></span> - $<%= item.price %>.00</p>
                     </div>
-                    <button><img src="<%= url %>/svg/cancel.svg"></button>
+                    <button onclick="rmfromcart('<%= item.name %>')"><img src="<%= url %>/svg/cancel.svg"></button>
                 </div>
                 <% }); } %>
                 <div></div>
                 <div>
-                    <p>Итого: $60</p>
-                    <a href="#" class="btn btn-green">Завершить заказ</a>
+                    <p>Итого: $<%= total %>.00</p>
+                    <a id="confirmOrder" class="btn btn-green">Завершить заказ</a>
                 </div>
+            </div>
+            <div>
+                <% if (error && error.length > 0) { %>
+                    <div class="message err"><%= error %></div>
+                <% } %>
+                <% if (success && success.length > 0) { %>
+                    <div class="message suc"><%= success %></div>
+                <% } %>
             </div>
         </div>
     </div>
