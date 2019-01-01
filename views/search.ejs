@@ -21,7 +21,7 @@
                     <span><img src="<%= product.image %>" alt="" onclick="goto('/products/<%= product._id %>');"></span>
                     <h1><%= product.name %></h1>
                     <h2><%= product.cat %></h2>
-                    <h3>$<%= product.price %>.00 <span>$<%= product.price * 1.2 %>.00</span></h3>
+                    <h3><%= Number(product.price * rate).toFixed(0) %>₸ <span>$<%= Number(product.price * rate * 1.2).toFixed(0) %>₸</span></h3>
                     <div>
                         <a href="/addtocart?product=<%= product._id %>" class="btn btn-green">В корзину</a>
                         <a href="/buytocart?product=<%= product._id %>" class="btn btn-gray">Купить</a>

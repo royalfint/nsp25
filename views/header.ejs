@@ -43,18 +43,20 @@
     
     <div id="cart" class="closed transparent">
         <div class="cart" id="cartBox">
-            <% if(cart) { cart.forEach(function(item) { %>
+            <% if(cart && cart.length > 0) { cart.forEach(function(item) { %>
             <div>
                 <div>
                     <img src="<%= item.image %>">
-                    <p><span><%= item.name %></span> - $<%= item.price %>.00</p>
+                    <p><span><%= item.name %></span> - <%= Number(item.price * rate).toFixed(0) %>₸</p>
                 </div>
                 <button onclick="rmfromcart('<%= item.name %>')"><img src="<%= url %>/svg/cancel.svg"></button>
             </div>
-            <% }); } else { %>
-                <p style="text-align: center; width: 100%;">Корзина пуста</p><br>
-            <% } %>
+            <% }); %>
             <a href="/checkout" class="btn btn-green">Оформить заказ</a>
+            <% } else { %>
+                <p style="text-align: center; width: 100%;">Корзина пуста</p><br>
+                <a href="/checkout" class="btn btn-green disabled">Оформить заказ</a>
+            <% } %>
         </div>
     </div>
     
@@ -87,7 +89,7 @@
                     </div>
                 </div>
                 <button id="search" class="search"><img src="<%= url %>/svg/search.svg"></button>
-                <form action="search" method="POST" class="search-field" id="searchField">
+                <form action="/search" method="POST" class="search-field" id="searchField">
                     <input name="query" id="searchInput" placeholder="Поиск..." type="text">
                 </form>
                 <button id="cartbutt" class="cartbutt"><img src="<%= url %>/svg/cart.svg"></button>

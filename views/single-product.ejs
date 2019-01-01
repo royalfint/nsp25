@@ -13,16 +13,13 @@
             <div class="filters flex">
                 <div>
                     <h1>Категории</h1>
-                    <button class="cat" cat="cosm">Ухаживающая косметика<img src="svg/down-arrow.svg"></button>
+                    <button class="cat" cat="cosm">Ухаживающая косметика<img src="<%= url %>/svg/down-arrow.svg"></button>
                     <button onclick="subsort('Ухаживающая косметика','Косметика Natria')" class="sub" sub="cosm">Косметика Natria</button>
                     <button onclick="subsort('Ухаживающая косметика','Tropical Mists')" class="sub" sub="cosm">Tropical Mists</button>
                     <button onclick="subsort('Ухаживающая косметика','Bremani Care')" class="sub" sub="cosm">Bremani Care</button>
                     <button class="cat" onclick="sort('Уход и гигиена')">Уход и гигиена</button>
-                    <button class="cat" onclick="sort('Акции')">Акции</button>
                     <button class="cat" onclick="sort('БАД')">БАД</button>
                     <button class="cat" onclick="sort('Косметика Bremani')">Косметика Bremani</button>
-                    <button class="cat" onclick="sort('Печатная продукция')">Печатная продукция</button>
-                    <button class="cat" onclick="sort('Сувенирная продукция')">Сувенирная продукция</button>
                 </div>
                 <div>
                     <h1>Критерии</h1>
@@ -34,20 +31,20 @@
             </div>
             <div>
                 <div class="product flex">
-                    <span style="background: #f0f2f2;">
+                    <span class="singleBox">
                         <img src="<%= product.image %>" alt="">
                     </span>
                     <div>
                         <h1><%= product.name %></h1>
                         <h2><%= product.cat %></h2>
-                        <h3>$<%= product.price %>.00 <span>$<%= product.price * 1.2 %>.00</span></h3>
+                        <h3><%= Number(product.price * rate).toFixed(0) %>₸ <span><%= Number(product.price * rate * 1.2).toFixed(0) %>₸</span></h3>
                         <%- product.short %>
                         <div class="buy flex">
                             <div class="flex">
                                 <input type="number" value="1" min="1" max="99" step="1">
                                 <a href="/addtocart?product=<%= product._id %>" class="btn btn-gray">В корзину</a>
                             </div>
-                            <a href="/discount" style="text-transform:none;" class="btn btn-green">Получить скидку</a>
+                            <a href="/buytocart?product=<%= product._id %>" style="text-transform:none;" class="btn btn-green">Купить</a>
                         </div>
                     </div>
                 </div>
@@ -63,21 +60,6 @@
         </div>
     </section>
     
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-    <script>
-        $(".cat").click((event) => {
-            var ccat = $(event.currentTarget);
-            var cat = ccat.attr("cat");
-            ccat.toggleClass("active");
-            $(".sub").each(function (index) {
-                console.log(index);
-                if ($(this).attr("sub") == cat) {
-                    $(this).toggleClass("open");
-                }
-            });
-        });
-    </script>
 </body>
 
 <% include footer %>

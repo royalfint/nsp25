@@ -4,15 +4,18 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="<%= url %>/css/dashboard.css">
+        <!-- Include CSS for icons. -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+         
+        <!-- Include Editor style. -->
+        <link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.0/css/froala_style.min.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <div class="container">
             <div class="menu">
-                <a href="/dashboard">Главная</a>
-                <a href="/dashboard/products">Товары</a>
-                <a href="/">Назад</a>
+                <a href="/dashboard"><img src="<%= url %>/svg/home.svg"></a>
+                <a href="/dashboard/products"><img src="<%= url %>/svg/box.svg"></a>
+                <a href="/"><img src="<%= url %>/svg/door.svg"></a>
             </div>
             <div class="content">
-                
-            </div>
-        </div>

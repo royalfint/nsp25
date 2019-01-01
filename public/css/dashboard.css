@@ -11,7 +11,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: .9rem;
+time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 1rem;
     font: inherit; vertical-align: baseline; }
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section { display: block; }
@@ -27,22 +27,60 @@ table { border-collapse: collapse; border-spacing: 0; }
     src: url("../fonts/MullerBold.otf") format("opentype"); }
     
 /************** GENERAL *************/
-html, body { margin: 0; padding: 0;
+html, body, h1, input { margin: 0; padding: 0; font-size: 1rem;
     font-family: Muller, sans-serif; }
-p { font-size: .9rem; line-height: 1.4rem; }
+p { font-size: 1rem; line-height: 1.4rem; }
 .flex { display: flex; }
 
-.container { display: flex; }
-.menu { display: flex; flex-direction: column; background: gray; height: 100vh; 
-    padding: 1rem 3rem; box-sizing: border-box; text-decoration: none; }
-.menu a { color: #fff; margin: 0 0 1rem 0; cursor: pointer; }
-.content { display: flex; padding: 1rem; box-sizing: border-box; }
-
-.btn { text-decoration: none; padding: .5rem 1rem; display: inline-block;
-    font-size: .9rem; text-align: center; }
-.btn.big { padding: 1rem 2rem; }
-.btn-green { background: #89c242; color: #fff; text-transform: uppercase;}
-.btn-gray { background: #cccccc; color: #fff; }
-.btn-green:hover { background: #6a9930; }
-.btn-gray:hover { background: #aeaeae; }
+.container { display: flex; box-sizing: border-box; }
+.menu { display: flex; flex-direction: column; background: #333e50; height: 100vh; 
+    box-sizing: border-box; text-decoration: none; align-items: center; }
+.menu a { color: #fff; padding: 1rem; cursor: pointer; transition: all .3s ease; }
+.menu a:hover, .menu a.active { background: #243042; }
+.menu img { height: 1.5rem; }
+.content { display: flex; padding: 1rem; box-sizing: border-box; background: #dfe7f2;
+    width: 100%; flex-direction: column; }
 .smooth { transition: all .3s ease; }
+
+/************** FLASH MESSAGES *************/
+.alert{ padding: 1rem; border: 1px solid #000; box-sizing: border-box; 
+    margin-bottom: .5rem; color: #000; }
+.alert.alert-danger { color: #721c24; background-color: #f8d7da; border-color: #f5c6cb;}
+.alert.alert-success{ color: #155724; background-color: #d4edda; border-color: #c3e6cb;}
+
+/************** SIGN IN AND UP *************/
+.wrapper { width: 100%; min-height: 100vh; display: flex; justify-content: center;
+    align-items: center; background: #dfe7f2; }
+.signin form { display: flex; flex-direction: column; padding: 1rem; 
+    background: #c9d8ec;  width: 24rem; box-sizing: border-box; }
+.signin form h1 { margin: 1rem 0; font-size: 1.25rem; color: #4c5c7b;
+    font-weight: 800; }
+.signin form input { padding: 1rem; background: #dfe7f2; border: 0;
+margin: 0 0 .5rem 0; }
+.signin form input[type="submit"] { background: #4c5c7b; color: #fff;
+    transition: all .3s ease; cursor: pointer; outline: none; }
+.signin  form input[type="submit"]:hover { background: #243042; }
+.signin  form .forgotPass { display: flex; width: 100%; justify-content: space-between;
+    margin: 1rem 0; }
+
+/************** TABLE *************/
+table { width: 100%; box-sizing: border-box; }
+table th { background: #c9d8ec; padding: 1rem; text-align: left; }
+table td { padding: 1rem; }
+table tr { background: #d6dde6; }
+table tr img { height: 1rem; margin: 0 .5rem; }
+table tr:nth-of-type(even) { background: #e5ebf3; }
+
+.add { margin: 0 0 1rem 0; display: flex; align-items: center; text-decoration: none;
+    color: #333e50; }
+.add img { height: 1.5rem; margin-left: .5rem; padding-bottom: .1rem; }
+
+/************** EDIT FORM *************/
+form.prod h1 { margin-bottom: 1rem; font-size: 1.25rem; color: #8a98af; }
+form.prod { width: 100%; }
+form.prod input, form.prod select, form.prod button { padding: 1rem; width: 100%;
+    background: #f3f7fd; border: 0; margin: 0 0 .5rem 0;outline: none; border-radius: 0; 
+    -webkit-appearance: none; font-size: 1rem; }
+form.prod button { margin: 1rem 0 0 0; width: 10rem; background: #333e50; color: #fff;
+    cursor: pointer; }
+form.prod button:hover { background: #202938; }

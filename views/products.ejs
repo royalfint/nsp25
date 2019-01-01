@@ -18,11 +18,8 @@
                     <button onclick="subsort('Ухаживающая косметика','Tropical Mists')" class="sub" sub="cosm">Tropical Mists</button>
                     <button onclick="subsort('Ухаживающая косметика','Bremani Care')" class="sub" sub="cosm">Bremani Care</button>
                     <button class="cat" onclick="sort('Уход и гигиена')">Уход и гигиена</button>
-                    <button class="cat" onclick="sort('Акции')">Акции</button>
                     <button class="cat" onclick="sort('БАД')">БАД</button>
                     <button class="cat" onclick="sort('Косметика Bremani')">Косметика Bremani</button>
-                    <button class="cat" onclick="sort('Печатная продукция')">Печатная продукция</button>
-                    <button class="cat" onclick="sort('Сувенирная продукция')">Сувенирная продукция</button>
                 </div>
                 <div>
                     <h1>Критерии</h1>
@@ -40,7 +37,7 @@
                         </span>
                         <h1><%= product.name %></h1>
                         <h2><%= product.cat %></h2>
-                        <h3>$<%= product.price %>.00 <span>$<%= product.price * 1.2 %>.00</span></h3>
+                        <h3><%= Number(product.price * rate).toFixed(0) %>₸ <span>$<%= (product.price * rate * 1.2).toFixed(0) %>₸</span></h3>
                         <div>
                             <a href="/addtocart?product=<%= product._id %>" class="btn btn-green">В корзину</a>
                             <a href="/buytocart?product=<%= product._id %>" class="btn btn-gray">Купить</a>

@@ -1,0 +1,75 @@
+<% include ../dheader %>
+
+<form class="prod" action="/dashboard/products" method="POST">
+    <h1>Добавление товара</h1>
+    <input type="text" placeholder="Имя нового товара" name="name" value="<%= fc.name %>">
+    <input type="text" placeholder="Ссылка на картинку товара" name="img" value="<%= fc.img %>">
+    <select name="cat" onchange="category(this.value)">
+        <option>Уход и гигиена</option>
+        <option>Ухаживающая косметика</option>
+        <option>БАД</option>
+        <option>Косметика Bremani</option>
+    </select>
+    <select id="subcat" name="subcat">
+        <option>Подкатегория</option>
+    </select>
+    <input type="number" placeholder="Цена товара в долларах" name="price" value="<%= fc.price %>">
+    <input type="text" placeholder="Краткое описание" name="short" value="<%= fc.short %>">
+    <textarea placeholder="Описание товара" name="desc"></textarea>
+    <div class="flash" style="margin: 1.5rem 0 0 0; ">
+        <% if(error && error.length > 0) { %>
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+        <% } if(success && success.length > 0) { %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
+    <button class="smooth">Добавить</button>
+</form>
+
+<script>
+    function category(th) {
+        var cats = [
+            <% cats.forEach(function(cat) { %>
+                { name: '<%= cat.name %> ', subcat: [
+                <% if (cat.sub) {cat.sub.forEach(function(subItem){ %>
+                    '<%= subItem %>',
+                <% }); } %>
+                ]},
+            <% }); %>
+        ];
+        
+        var newhtml = "";
+        var isThereSubs = false;
+        var cur_subcat = "<%= fc.subcat %>";
+        
+        cats.forEach(function(cat) {
+            if(th.trim() == cat.name.trim()) {
+                cat.subcat.forEach(function(subcat){
+                    isThereSubs = true;
+                    if(cur_subcat == subcat){
+                        newhtml += "<option selected>" + subcat + "</option>"; 
+                    } else {
+                        newhtml += "<option>" + subcat + "</option>"; 
+                    }
+                });
+            } 
+        });
+        
+        document.getElementById("subcat").innerHTML = newhtml;
+        
+        if(isThereSubs)
+            $("#subcat").show();
+        else
+            $("#subcat").hide();
+    }
+    
+    document.addEventListener("DOMContentLoaded", function() {
+      setTimeout(() => { category("<%= fc.cat %>") }, 300);
+    });
+</script>
+
+<% include ../dfooter %>

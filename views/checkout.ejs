@@ -53,14 +53,14 @@
                 <div>
                     <div>
                         <img src="<%= item.image %>">
-                        <p><span><%= item.name %></span> - $<%= item.price %>.00</p>
+                        <p><span><%= item.name %></span> - <%= Number(item.price * rate).toFixed(0) %>₸</p>
                     </div>
                     <button onclick="rmfromcart('<%= item.name %>')"><img src="<%= url %>/svg/cancel.svg"></button>
                 </div>
                 <% }); } %>
                 <div></div>
                 <div>
-                    <p>Итого: $<%= total %>.00</p>
+                    <p>Итого: <%= Number(total * rate).toFixed(0) %>₸</p>
                     <a id="confirmOrder" class="btn btn-green">Завершить заказ</a>
                 </div>
             </div>

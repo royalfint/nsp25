@@ -20,6 +20,9 @@ blockquote, q { quotes: none; }
 blockquote:before, blockquote:after,
 q:before, q:after { content: ''; content: none; }
 table { border-collapse: collapse; border-spacing: 0; }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; 
+  margin: 0; }
 
 @font-face { font-family: Muller;
     src: url("../fonts/MullerRegular.otf") format("opentype"); }
@@ -43,7 +46,9 @@ section > div { width: 72rem; padding-right: 1rem !important;
 .btn-gray { background: #cccccc; color: #fff; }
 .btn-green:hover { background: #6a9930; }
 .btn-gray:hover { background: #aeaeae; }
+.btn.disabled { opacity: .7 !important; pointer-events: none; }
 .smooth { transition: all .3s ease; }
+b { font-weight: 900; }
 
 /************** HAMBURGER *************/
 #nav-icon4 { width: 60px; height: 10px; position: relative;
@@ -184,6 +189,7 @@ section > div { width: 72rem; padding-right: 1rem !important;
 .buyList button { border: 0; background: transparent; outline: none; cursor: pointer; }
 .buyList button img { height: 1.5rem; }
 .buyList span { font-weight: 600; }
+.buyList #confirmOrder { cursor: pointer; }
 
 /********* HERO SECTION **********/
 #searchRes { padding-top: 3rem; background: #fff; }
@@ -227,7 +233,7 @@ section > div { width: 72rem; padding-right: 1rem !important;
     transition: all .3s ease; cursor: pointer; position: relative; background: #fff; }
 .filters button.sub { padding-left: 1.5rem; display: none; }
 .filters button.sub.open { display: flex; }
-.filters button.sub.open.active { color: #000; }
+.filters button.sub.open.active { color: #000; background: #f8f9fa; }
 .filters button:hover, .filters button.cat.active { background: #f8f9fa; color: #000; }
 .filters button img { height: 1rem; position: absolute; top: .75rem; right: .75rem; 
     opacity: 0; transition: all .3s ease; }
@@ -250,7 +256,7 @@ section > div { width: 72rem; padding-right: 1rem !important;
  
 /********* SINGLE PRODUCT  **********/
 .product { background: #fff; width: 54rem; }
-.product > span > img { width: 25rem; opacity: 0.8; }
+.product > span > img { width: 25rem; }
 .product > div { box-sizing: border-box; padding: 1.5rem; }
 .product h1 { color: #222; font-weight: 600; }
 .product h2 { color: #a09fa0; font-size: .8rem; margin: .5rem 0 1rem 0; }
@@ -261,8 +267,7 @@ section > div { width: 72rem; padding-right: 1rem !important;
 
 .product .buy { margin-top: 1.5rem; align-items: flex-start; }
 .product .buy input { font-size: .9rem; color: #222; outline: none; text-align: left;
-    padding: .4rem 0 .4rem 1.5rem; border: 0; background: #eeeeef;
-    margin-right: .5rem; }
+    padding: .4rem .7rem .4rem 1.5rem; border: 0; background: #eeeeef; }
 .product .buy .btn-green { margin-left: .5rem; }
 
 /********* SINGLE PRODUCT DESC  **********/
@@ -326,13 +331,15 @@ strong { font-weight: 800; }
 .loop > div { display: flex; flex-direction: column; align-items: center;
     margin: 0 0 2rem 0; }
 .loop h1 { font-size: .9rem; color: #222; font-weight: 600; text-align: center;
-    margin-top: 1rem; }
+    margin-top: 1rem; height: 1.75rem; }
 .loop h2 { font-size: .8rem; color: #a09fa0; text-align: center; margin: .4rem 0 }
 .loop h3 { font-size: 1.05rem; color: #a09fa0; font-weight: 600; text-align: center;
     margin-bottom: 1rem; }
 .loop h3 span { text-decoration: line-through; opacity: .3; }
-.loop img { width: 100%; cursor: pointer; opacity: 0.6; }
-.loop > div > span { background: #f0f2f2; display: block; }
+.loop img { height: 100%; cursor: pointer; position: absolute; top: 0; left: 0;
+  bottom: 0; right: 0; margin: 0 auto; }
+.loop > div > span { background: #fff; object-fit: contain; display: flex;
+    width: 100%;padding-top: 100%; box-sizing: border-box; position: relative; }
 .loop .btn { text-transform: none; }
 
 /********* FOOTER **********/
