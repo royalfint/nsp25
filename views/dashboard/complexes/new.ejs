@@ -1,0 +1,23 @@
+<% include ../dheader %>
+
+<form class="prod" action="/dashboard/complexes" method="POST">
+    <h1>Добавление программы</h1>
+    <input type="text" placeholder="Имя новой программы" name="name" value="<%= fc.name %>">
+    <input type="text" placeholder="Ссылка на картинку программы" name="img" value="<%= fc.img %>">
+    <input type="text" placeholder="Краткое описание" name="short" value="<%= fc.short %>">
+    <textarea placeholder="Описание программы" name="desc"><%= fc.desc %></textarea>
+    <div class="flash" style="margin: 1.5rem 0 0 0; ">
+        <% if(error && error.length > 0) { %>
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+        <% } if(success && success.length > 0) { %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
+    <button class="smooth">Добавить</button>
+</form>
+
+<% include ../dfooter %>

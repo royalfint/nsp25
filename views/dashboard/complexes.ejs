@@ -1,0 +1,20 @@
+<% include dheader %>
+
+<a class="add" href="/dashboard/complexes/new">Добавую программу <img src="<%= url %>/svg/plus.svg"></a>
+<table>
+    <tr>
+        <th>Имя</th>
+        <th>Действия</th>
+    </tr>
+    <% posts.forEach(function(post){ %>
+        <tr>
+            <td><%= post.name %></td>
+            <td>
+                <a href="/dashboard/complexes/<%= post.id %>/edit"><img src="<%= url %>/svg/pencil.svg"></a>
+                <a href="/dashboard/complexes/delete/<%= post.id %>"><img src="<%= url %>/svg/dustbin.svg"></a>
+            </td>
+        </tr>
+    <% }); %>
+</table>
+
+<% include dfooter %>

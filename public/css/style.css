@@ -32,7 +32,7 @@ input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none;
 /************** GENERAL *************/
 html, body { margin: 0; padding: 0;
     font-family: Muller, sans-serif; }
-p { font-size: .9rem; line-height: 1.4rem; }
+p, ol, li{ font-size: .9rem; line-height: 1.4rem; }
 .flex { display: flex; }
 section { display: flex; justify-content: center; width: 100%; 
     align-items: center; }
@@ -229,7 +229,7 @@ b { font-weight: 900; }
 .filters h1 { text-transform: uppercase; font-weight: 600; padding: .75rem;
     background: #f8f9fa; font-size: .9rem; line-height: 90%; }
 .filters button { width: 100%; border: 0; color: #636665; font-size: .8rem; 
-    text-align: left; padding: .75rem; outline: none; font-family: 'Montserrat';
+    text-align: left; padding: .75rem; outline: none; font-family: Muller;
     transition: all .3s ease; cursor: pointer; position: relative; background: #fff; }
 .filters button.sub { padding-left: 1.5rem; display: none; }
 .filters button.sub.open { display: flex; }
@@ -248,7 +248,8 @@ b { font-weight: 900; }
 /********* POST THUMBNAIL *********/
 #post-thumbnail { padding-top: 3rem; padding-bottom: 1.5rem; }
 .post-thumbnail { height: 15rem; overflow: hidden; align-items: center; }
-.post-thumbnail img { width: 100%; }
+.post-thumbnail > div {width: 100%; }
+.post-thumbnail img { width: 100%; opacity: .95; }
 
 /********* POST CONTENT *********/
 #post-content { padding-bottom: 3rem; }
@@ -294,18 +295,22 @@ strong { font-weight: 800; }
 .posts > div > h2 { font-size: .9rem; color: #88898a; margin: 0 0 .3rem 0; 
     text-align: center; }
 
-.post { flex-direction: column; background: #fff;
+.post { flex-direction: column; background: #fff; position: relative;
     align-items: flex-start; margin-bottom: 2rem; }
-.post h1 { font-size: .9rem; color: #222; font-weight: 600;
-     text-transform: uppercase; padding: .75rem; line-height: 140%; }
-.post p { color: #adadad; padding: 0 .75rem; }
+.post h1 { font-size: .9rem; color: #222; font-weight: 600; height: 3.4rem; 
+    box-sizing: border-box; text-transform: uppercase; padding: .75rem; 
+    line-height: 140%; overflow: hidden; margin-bottom: .25rem; }
+.post p { color: #adadad; padding: 0 .75rem; height: 4.125rem; overflow: hidden;}
 .post .btn { margin: .75rem; align-self: flex-end; text-transform: none; }
-.post img { width: 100%; cursor: pointer; }
+.post span { background: #fff; object-fit: contain; display: flex; width: 100%;
+    padding-top: 70%; box-sizing: border-box; position: relative; overflow: hidden;}
+.post img { height: 100%; cursor: pointer; position: absolute; top: 0; 
+    bottom: 0;  margin: auto; object-position: 50% 50%; object-fit: none; }
 
 /********* POST FILTER WIDGET **********/
 .post-filter { margin-bottom: 1.5rem; }
 .post-filter button { background: #fff; font-size: .9rem; border: 0;
-    padding: .5rem 1.5rem; font-family: 'Montserrat'; transition: all .3s ease; 
+    padding: .5rem 1.5rem; transition: all .3s ease; font-family: Muller;
     cursor: pointer; outline: none; }
 .post-filter button:hover { background: #ededed; }
 .post-filter button.active { background: #89c242; color: #fff; }
@@ -323,6 +328,12 @@ strong { font-weight: 800; }
 
 /********* POPULAR PRODUCTS LOOP **********/
 #popular { padding-top: 3rem; padding-bottom: 1rem; }
+
+.pageControl { display: flex; width: 100%; justify-content: center; padding-top:1rem;
+    padding-bottom: 2rem; flex-wrap: wrap; align-items: flex-end; }
+.pageControl a { width: 2.5rem; text-align: center; color: #000; text-decoration: none;
+    background: #f8f9fa; margin: 0 .25rem .5rem .25rem; padding: .75rem 0;
+    font-size: .9rem; }
 
 .popular > div > div > h1 { font-size: 1.3rem; color: #222; text-transform: uppercase;}
 .popular > div > div > h2 { font-size: .9rem; color: #88898a; margin: 0 0 .3rem 0; }
@@ -379,8 +390,7 @@ strong { font-weight: 800; }
     
     .product > span > img { width: 20rem; }
     .product, .desc { width: 43rem; }
-    .product .buy { flex-direction: column; }
-    .product .buy .btn-green { margin-left: 0; margin-top: .5rem; }
+
 }
 
 @media screen and (max-width: 1050px){

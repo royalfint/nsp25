@@ -1,3 +1,22 @@
 <% include dheader %>
-        
+
+<a class="add" href="/dashboard/posts/new">Добавить новый <img src="<%= url %>/svg/plus.svg"></a>
+<table>
+    <tr>
+        <th>Имя</th>
+        <th>Категория</th>
+        <th>Действия</th>
+    </tr>
+    <% posts.forEach(function(post){ %>
+        <tr>
+            <td><%= post.name %></td>
+            <td><%= post.cat %></td>
+            <td>
+                <a href="/dashboard/posts/<%= post.id %>/edit"><img src="<%= url %>/svg/pencil.svg"></a>
+                <a href="/dashboard/posts/delete/<%= post.id %>"><img src="<%= url %>/svg/dustbin.svg"></a>
+            </td>
+        </tr>
+    <% }); %>
+</table>
+
 <% include dfooter %>

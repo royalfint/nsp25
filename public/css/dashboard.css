@@ -34,12 +34,13 @@ p { font-size: 1rem; line-height: 1.4rem; }
 
 .container { display: flex; box-sizing: border-box; }
 .menu { display: flex; flex-direction: column; background: #333e50; height: 100vh; 
-    box-sizing: border-box; text-decoration: none; align-items: center; }
+    box-sizing: border-box; text-decoration: none; align-items: center; left: 0;
+    position: fixed; top: 0; }
 .menu a { color: #fff; padding: 1rem; cursor: pointer; transition: all .3s ease; }
 .menu a:hover, .menu a.active { background: #243042; }
 .menu img { height: 1.5rem; }
 .content { display: flex; padding: 1rem; box-sizing: border-box; background: #dfe7f2;
-    width: 100%; flex-direction: column; }
+    width: 100%; flex-direction: column; padding-left: 5rem; min-height: 100vh; }
 .smooth { transition: all .3s ease; }
 
 /************** FLASH MESSAGES *************/

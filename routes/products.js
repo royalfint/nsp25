@@ -31,8 +31,8 @@ router.get("/clear", middleware.isLoggedIn, function(req, res) {
     res.redirect("/dashboard");
 });
 
-//POST NEW PRODUCT INTO DB middleware.isLoggedIn
-router.post("/", function(req, res) {
+//POST NEW PRODUCT INTO DB 
+router.post("/", middleware.isLoggedIn, function(req, res) {
         var post = {
             name: req.body.name,
             cat: req.body.cat,

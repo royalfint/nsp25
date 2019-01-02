@@ -44,6 +44,15 @@
                         </div>
                     </div>
                 <% }); %>
+                <span class="pageControl">
+                    <% for(i = 0; i < pages; i++) { %>
+                        <% if (page == i) { %>
+                            <a style="background: #cccccc;" href="/products/page/<%= i %>"><%= i+1 %></a>
+                        <% } else { %>
+                            <a href="/products/page/<%= i %>"><%= i+1 %></a>
+                        <% } %>
+                    <% } %>
+                </span>
             </div>
         </div>
     </section>

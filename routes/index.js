@@ -2,6 +2,7 @@ var express      = require("express"),
     User         = require("../models/user"),
     cats         = require("../models/cats.json").list,
     passport     = require("passport"),
+    request      = require('request'),
     sgMail       = require("@sendgrid/mail"),
     Post         = require("../models/post"),
     Complex      = require("../models/complex"),
@@ -15,7 +16,7 @@ var api_key     = 'SG.FFK2Ri_DQMaIkFDZ4QtLZw.0CEhXdYOJKb7trz1EmEQCZPVwpi6nLMdU_J
 app.get("/contacts", function(req, res) { res.render("contacts"); });
 app.get("/discount", function(req, res) { res.render("discount"); });
 
-app.get("/checkout", function(req, res) { 
+app.get("/checkout", function(req, res) {
     
     var form = {};
     if(req.session.checkout) form = req.session.checkout;
@@ -123,6 +124,16 @@ app.get("/addtocart", function(req, res) {
     
     if (!req.query.product) return res.redirect("back");
     
+    request.get('http://free.currencyconverterapi.com/api/v5/convert?q=USD_KZT&compact=y', {
+      json: {
+        todo: 'Buy the milk'
+      }
+    }, (error, res, body) => {
+      if (error) return console.error(error);
+         
+      if(res.statusCode) global.rate = body.USD_KZT.val;
+    });
+    
     Product.findById(req.query.product, function(err, prod){
         if (err) console.log(err);
         
@@ -150,6 +161,16 @@ app.get("/buytocart", function(req, res) {
     
     if (!req.query.product) return res.redirect("back");
     
+    request.get('http://free.currencyconverterapi.com/api/v5/convert?q=USD_KZT&compact=y', {
+      json: {
+        todo: 'Buy the milk'
+      }
+    }, (error, res, body) => {
+      if (error) return console.error(error);
+         
+      if(res.statusCode) global.rate = body.USD_KZT.val;
+    });
+    
     Product.findById(req.query.product, function(err, prod){
         if (err) console.log(err);
         
@@ -164,11 +185,15 @@ app.get("/buytocart", function(req, res) {
 app.get("/products", function(req, res) {
     var query = {};
     
+    var perPage = 12;
+    
     if(req.query.cat) query.cat = req.query.cat;
     if(req.query.sub) query.subcat = req.query.sub;
     
     if(!req.session.sort) req.session.sort = "created";
-    var ses = req.session.sort, sort = {created: -1};
+    var ses = req.session.sort, sort = {views: -1};
+    
+    if(!req.session.pages) req.session.pages = 0;
     
     switch(ses){
         case "views":
@@ -180,24 +205,43 @@ app.get("/products", function(req, res) {
         case "name":
             sort = {name: 1}; break;
     }
-        
     
-    Product.find(query).sort(sort).exec(function(err, allProducts){
+    Product.find(query).sort(sort).limit(perPage).skip(perPage*req.session.pages).exec(function(err, allProducts){
         if(err) console.log(err);
         
-        var formquery = {};
+        Product.countDocuments(query).exec(function(err, count){
+            if(err) console.log(err);
+            
+            var formquery = {};
+            var totalPages = Math.ceil(count / perPage);
+            
+            req.session.redirecTo = String(req.protocol + '://' + req.get('host') + req.originalUrl).replace('http', 'https');
+            if(req.session.pages >= totalPages) return res.redirect('/products/page/0');
         
-        if(req.session.search)
-            formquery = req.session.search;
-        
-        res.render("products", {products: allProducts, q: formquery, cat: query.cat, sub: query.subcat });
+            if(req.session.search)
+                formquery = req.session.search;
+            
+            res.render("products", {products: allProducts, q: formquery, cat: query.cat, sub: query.subcat,
+                page: req.session.pages, pages: totalPages});
+        });
     });
+});
+
+//changes current product page
+app.get('/products/page/:page', function(req, res) {
+   req.session.pages = req.params.page;
+   
+   if(req.session.redirecTo) return res.redirect(req.session.redirecTo);
+   
+   res.redirect('back');
 });
 
 //PRODUCT SHOWPAGE MOREEE
 app.get("/products/:id",function(req, res){
     Product.findById(req.params.id).exec(function(err, foundProduct){
         if(err) console.log(err);
+        
+        if(!foundProduct) { return res.send('Ошибка 404. Данная страница не найдена.'); }
         
         foundProduct.views += 1;
         foundProduct.save();
@@ -209,6 +253,8 @@ app.get("/post/:id", function(req, res) {
     Post.findById(req.params.id).exec(function(err, foundPost){
         if(err) console.log(err);
         
+        if(!foundPost) { return res.send('Ошибка 404. Данная страница не найдена.'); }
+        
         foundPost.views += 1;
         foundPost.save();
         res.render("single-post", {post: foundPost, cats: cats, folder: middleware.folder});
@@ -218,6 +264,8 @@ app.get("/post/:id", function(req, res) {
 app.get("/complex/:id", function(req, res) {
     Complex.findById(req.params.id).exec(function(err, foundComplex){
         if(err) console.log(err);
+        
+        if(!foundComplex) { return res.send('Ошибка 404. Данная страница не найдена.'); }
         
         foundComplex.views += 1;
         foundComplex.save();

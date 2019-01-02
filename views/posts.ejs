@@ -21,7 +21,9 @@
             <% posts.forEach(function(post) {  %>
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="post flex">
-                        <img src="<%= post.image %>" alt="" onclick="goto('/post/<%= post._id %>');">
+                        <span>
+                            <img src="<%= post.image %>" alt="" onclick="goto('/post/<%= post._id %>');">
+                        </span>
                         <h1><%= post.name %></h1>
                         <p><%= post.short %></p>
                         <a href="/post/<%= post._id %>" class="btn btn-gray">Подробнее</a>
