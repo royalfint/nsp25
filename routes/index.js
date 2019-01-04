@@ -148,10 +148,14 @@ app.get("/rmfromcart", function(req, res) {
     
     if(!req.query.name) return res.redirect("back");
     
+    console.log("QUERY:", req.query.name);
+    console.log(req.session.cart);
     req.session.cart.forEach(function(item, index, object) {
-        if (item.name == req.query.name) {
+        if (String(item.name).trim() == String(req.query.name).trim()) {
             object.splice(index, 1);
             return res.redirect("back");
+        } else {
+            return res.send("Нет такого товара в корзине, чтобы его удалить");
         }
     });
 });

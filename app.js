@@ -56,14 +56,15 @@ app.use(authRoutes);
 app.use("/dashboard", dashRoutes);
 app.use("/dashboard/products", productRoutes);
 
+
 /*
 app.get("/test", function(req, res) {
     Product.find({}, function(err, prods){
         if(err) console.log(err);
         
         prods.forEach(function(item){
-           item.image = item.image.replace('http://', 'https://');
-           console.log(item.image);
+           item.name = item.name.replace('-', ' ');
+           console.log(item.name);
            item.save();
         });
         
@@ -71,6 +72,7 @@ app.get("/test", function(req, res) {
     });
 });
 */
+
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server has been started!");

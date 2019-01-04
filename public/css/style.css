@@ -238,6 +238,7 @@ b { font-weight: 900; }
 .filters button img { height: 1rem; position: absolute; top: .75rem; right: .75rem; 
     opacity: 0; transition: all .3s ease; }
 .filters button:hover img, .filters button.cat.active img { opacity: 1; }
+.filters button.border { border:0; border-top: 1px solid #cccccc; }
  
 /********* CONTACTS PAGE  **********/
 #map { padding-top: 3rem; padding-bottom: 3rem; }
