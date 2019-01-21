@@ -128,10 +128,13 @@ app.get("/addtocart", function(req, res) {
       json: {
         todo: 'Buy the milk'
       }
-    }, (error, res, body) => {
+    }, (error, resa, bodya) => {
       if (error) return console.error(error);
          
-      if(res.statusCode) global.rate = body.USD_KZT.val;
+      if(resa.statusCode) {
+          global.rate = bodya.USD_KZT.val;
+          res.locals.rate = global.rate;
+      }
     });
     
     Product.findById(req.query.product, function(err, prod){
@@ -154,8 +157,6 @@ app.get("/rmfromcart", function(req, res) {
         if (String(item.name).trim() == String(req.query.name).trim()) {
             object.splice(index, 1);
             return res.redirect("back");
-        } else {
-            return res.send("Нет такого товара в корзине, чтобы его удалить");
         }
     });
 });
