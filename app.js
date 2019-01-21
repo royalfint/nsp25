@@ -22,7 +22,7 @@ mongoose.connect("mongodb://nspadmin:YtEpyftimVjq1Gfhjkm@ds119024.mlab.com:19024
 mongoose.set('useFindAndModify', false);
 //global.siteurl = "https://nsp25-royalfint.c9users.io";
 global.siteurl = "https://www.nsp25.kz";
-global.rate = 370;
+global.rate = 1;
 
 app.use(redirect([/localhost:(\d{4})/], [/\/insecure/], 301));
 app.use(require("express-session")({

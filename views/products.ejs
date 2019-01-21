@@ -11,8 +11,8 @@
     <section id="products">
         <div class="products flex">
             <div class="filters flex">
-                <div>
-                    <h1>Категории</h1>
+                <div class="closed">
+                    <h1>Категории <img src="svg/down-arrow.svg"></h1>
                     <button class="cat" cat="cosm">Ухаживающая косметика<img src="svg/down-arrow.svg"></button>
                     <button onclick="subsort('Ухаживающая косметика','Косметика Natria')" class="sub" sub="cosm">Косметика Natria</button>
                     <button onclick="subsort('Ухаживающая косметика','Tropical Mists')" class="sub" sub="cosm">Tropical Mists</button>
@@ -22,8 +22,8 @@
                     <button class="cat" onclick="sort('Косметика Bremani')">Косметика Bremani</button>
                     <button class="border" onclick="goto('/complex')">Оздоровительные Программы</button>
                 </div>
-                <div>
-                    <h1>Критерии</h1>
+                <div class="closed">
+                    <h1>Критерии <img src="svg/down-arrow.svg"></h1>
                     <button onclick="sortProds('views')">Популярность</button>
                     <button onclick="sortProds('cheap')">Сначала дешевые</button>
                     <button onclick="sortProds('expensive')">Сначала дорогие</button>
@@ -38,8 +38,8 @@
                         </span>
                         <h1><%= product.name %></h1>
                         <h2><%= product.cat %></h2>
-                        <h3><%= Number(product.price * rate).toFixed(0) %>₸ <span>$<%= (product.price * rate * 1.2).toFixed(0) %>₸</span></h3>
-                        <div>
+                        <h3><%= Number(product.price * rate).toFixed(0) %>₸ <span><%= (product.price * rate * 1.2).toFixed(0) %>₸</span></h3>
+                        <div class='loopactions'>
                             <a href="/addtocart?product=<%= product._id %>" class="btn btn-green">В корзину</a>
                             <a href="/buytocart?product=<%= product._id %>" class="btn btn-gray">Купить</a>
                         </div>
@@ -57,5 +57,15 @@
             </div>
         </div>
     </section>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script>
+        $('.filters>div').click(function(event){
+            console.log(event);
+           if (event.target.nodeName == 'H1') {
+               event.target.parentElement.classList.toggle('closed');
+           }
+        });
+    </script>
     
 <% include footer %>
