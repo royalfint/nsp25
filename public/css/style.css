@@ -22,7 +22,8 @@ q:before, q:after { content: ''; content: none; }
 table { border-collapse: collapse; border-spacing: 0; }
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; 
-  margin: 0; }
+  margin: 0; -moz-appearance: none; }
+input[type=number] { -moz-appearance:textfield; }
 
 @font-face { font-family: Muller;
     src: url("../fonts/MullerRegular.otf") format("opentype"); }
@@ -132,9 +133,11 @@ b { font-weight: 900; }
     position: relative; transition: all .3s ease; }
 .menu a:hover { color: #89c242; }
 #products .filters button:hover { color: #89c242; }
-#signthisshitup { background: #89c242; width: 100%; padding: .5rem 1rem;
-    box-sizing: border-box; }
-    
+#signthisshitup { display: flex; background: #89c242; width: 100%;
+    height: 2rem; padding: .5rem 1rem; box-sizing: border-box;
+    justify-content: center; align-items: center; color: #fff; 
+    cursor: pointer; text-decoration: none; transition: all .3s ease; }
+#signthisshitup:hover { background: #6a9930; }
 /********* SEARCH TRIGGER **********/
 .search { border: 0; background: transparent; outline: none; cursor: pointer;
     padding: 0; }
@@ -220,16 +223,20 @@ b { font-weight: 900; }
 .control img { height: 1.7rem; }
 .control.right { left: auto; right: 2rem; }
 
+.product .singleBox { display: flex; justify-content: center; align-items: flex-start;}
+
 /********* PRODUCTS PAGE **********/
 #products { background: #eef1ef; padding-top: 3rem; padding-bottom: 3rem; }
 .products { justify-content: space-between; align-items: flex-start; }
 .products .loop { width: 54rem; background: #fff; padding: 1rem .5em 0 .5rem; 
     box-sizing: border-box; min-height: 12.25rem; }
+.loop a { text-decoration: none; }
 
 /********* FILTERS WIDGET **********/
 .filters { width: 16.5rem; padding-right: 1rem; box-sizing: border-box;
     flex-direction: column; }
 .filters > div { background: #fff; margin-bottom: 1rem; width: 100%; }
+.filters > div > h1 > img { pointer-events: none; }
 .filters h1 { text-transform: uppercase; font-weight: 600; padding: .75rem;
     background: #f8f9fa; font-size: .9rem; line-height: 90%; position: relative; }
 .filters button { width: 100%; border: 0; color: #636665; font-size: .8rem; 
@@ -259,7 +266,10 @@ b { font-weight: 900; }
 /********* POST CONTENT *********/
 #post-content { padding-bottom: 3rem; }
 .post-content h1 { font-weight: 600; text-transform: uppercase; margin-bottom: 1rem; }
- 
+.post-content a { color: #89c242; }
+.post-content td { border: 1px solid grey; padding: .5rem; box-sizing: border-box;
+}
+
 /********* SINGLE PRODUCT  **********/
 .product { background: #fff; width: 54rem; }
 .product > span > img { width: 25rem; }
@@ -273,7 +283,8 @@ b { font-weight: 900; }
 
 .product .buy { margin-top: 1.5rem; align-items: flex-start; }
 .product .buy input { font-size: .9rem; color: #222; outline: none; text-align: left;
-    padding: .4rem .7rem .4rem 1.5rem; border: 0; background: #eeeeef; box-sizing: border-box;}
+    padding: .4rem .7rem .4rem 1.5rem; border: 0; background: #eeeeef; box-sizing: border-box;
+    width: 4rem; }
 .product .buy .btn-green { margin-left: .5rem; }
 .product .buy a, .product .buy input { height: 1.8rem !important; box-sizing: border-box;}
 
@@ -307,7 +318,9 @@ strong { font-weight: 800; }
     box-sizing: border-box; text-transform: uppercase; padding: .75rem; 
     line-height: 140%; overflow: hidden; margin-bottom: .25rem; }
 .post p { color: #adadad; padding: 0 .75rem; height: 4.125rem; overflow: hidden;}
-.post .btn { margin: .75rem; align-self: flex-end; text-transform: none; }
+.post .btn { margin: .75rem; align-self: flex-end; text-transform: none;
+    transition: all .3s ease; }
+.post .btn:hover { background: #89c242; }
 .post span { background: #fff; object-fit: contain; display: flex; width: 100%;
     padding-top: 70%; box-sizing: border-box; position: relative; overflow: hidden;}
 .post img { height: 100%; cursor: pointer; position: absolute; top: 0; 

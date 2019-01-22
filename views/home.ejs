@@ -22,7 +22,7 @@
             <div class="col-xs-12">
                 <div>
                     <h2>Наша Продукция</h2>
-                    <h1>Последний завоз</h1>
+                    <h1>Хит продаж</h1>
                 </div>
             </div>
             <% var i = 0; var st = ""; products.forEach(function(product) { i++; %>
@@ -31,7 +31,7 @@
                     <span>
                         <img src="<%= product.image %>" alt="" onclick="goto('/products/<%= product._id %>');">
                     </span>
-                    <h1><%= product.name %></h1>
+                    <a href="/products/<%= product._id %>"><h1><%= product.name %></h1></a>
                     <h2><%= product.cat %></h2>
                     <h3><%= Number(product.price * rate).toFixed(0) %>₸ <span><%= Number(product.price * rate * 1.2).toFixed(0) %>₸</span></h3>
                     <div>

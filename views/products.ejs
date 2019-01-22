@@ -30,7 +30,7 @@
                     <button onclick="sortProds('name')">По алфавиту</button>
                 </div>
                 <div>
-                    <a id="signthisshitup">Регистрация</a>
+                    <a href="https://nsp25-royalfint.c9users.io/discount" id="signthisshitup">Регистрация</a>
                 </div>
             </div>
             <div class="row loop">
@@ -39,7 +39,7 @@
                         <span>
                             <img src="<%= product.image %>" alt="" onclick="goto('/products/<%= product._id %>');">
                         </span>
-                        <h1><%= product.name %></h1>
+                        <a href="/products/<%= product._id %>"><h1><%= product.name %></h1></a>
                         <h2><%= product.cat %></h2>
                         <h3><%= Number(product.price * rate).toFixed(0) %>₸ <span><%= (product.price * rate * 1.2).toFixed(0) %>₸</span></h3>
                         <div class='loopactions'>
